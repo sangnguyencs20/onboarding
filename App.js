@@ -45,15 +45,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <SafeAreaView>
-        <NavigationContainer>
           {loading ? <Loading /> : viewedOnboarding ? <HomeScreen /> : <Onboarding />}
-        
-        </NavigationContainer>
-      </SafeAreaView>
       <StatusBar style="auto" />
-
-
     </View >
   );
 }
