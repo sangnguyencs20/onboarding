@@ -21,8 +21,7 @@ export default OnboardingItem = ({ item }) => {
 const styles = StyleSheet.create({
 
     containerOfText: {
-        flex: 0.5,
-        width: '80%',
+        width: '90%',
     },
     container: {
         flex: 1,
@@ -30,18 +29,21 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     image: {
+        marginTop: 50,
         flex: 0.7,
         justifyContent: 'center',
     },
     title: {
-        fontWeight: '800',
-        fontSize: 28,
-        marginBottom: 10,
+        fontWeight: '700',
+        fontSize: 32,
+        marginTop: 20,
+        marginBottom: 15,
         color: '#493d8a',
         textAlign: 'center',
     },
     text: {
         fontWeight: '300',
+        fontSize: 18,
         color: '#62656b',
         textAlign: 'center',
     }

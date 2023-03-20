@@ -15,7 +15,7 @@ export default slides =
         {
             "id": '3',
             "title": 'Weekly analysis',
-            "text": 'Set up your goals and achieve them, and get insights about your results',
+            "text": 'Set up your goals and achieve them, and get insights about your results.',
             'image': require('../assets/OB3-Image.png'),
         }
     ]
