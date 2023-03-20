@@ -75,11 +75,17 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        position: 'relative',
     },
     button: {
-        position: 'absolute',
         backgroundColor: '#F4338F',
-        borderRadius: 100,
+        borderRadius: 128,
         padding: 20,
+        position: 'absolute',
+        top: '48%',
+        left: '15.5%',
+        marginTop: -32,
+        marginLeft: -32,
     }
 });
+
