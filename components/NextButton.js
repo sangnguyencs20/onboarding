@@ -1,13 +1,46 @@
-import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Animated } from "react-native";
+import { React, useEffect, useRef } from 'react';
+import { StyleSheet, View, TouchableOpacity, Animated } from "react-native";
 import Svg, { G, Circle } from 'react-native-svg'
 import { AntDesign } from '@expo/vector-icons';
-export default NextButton = () => {
+export default NextButton = ({ percentage, scrollTo }) => {
     const size = 128;
     const strokeWidth = 2;
     const center = size / 2;
     const radius = size / 2 - strokeWidth * 2;
     const circumference = radius * 2 * Math.PI;
+
+    const progessAnimation = useRef(new Animated.Value(0)).current;
+    const progressRef = useRef(null);
+
+    const animation = (toValue) => {
+        return Animated.timing(progessAnimation, {
+            toValue,
+            duration: 250,
+            useNativeDriver: true
+        }).start();
+    }
+
+    useEffect(() => {
+        animation(percentage);
+    }, [percentage]);
+
+
+    useEffect(() => {
+        progessAnimation.addListener(
+            (value) => {
+                const strokeDashoffset = circumference - (circumference * value.value) / 100;
+
+                if (progressRef?.current) {
+                    progressRef.current.setNativeProps({
+                        strokeDashoffset,
+                    });
+                }
+            }, [percentage]);
+        return () => {
+            progessAnimation.removeAllListeners();
+        }
+    });
+
     return (
         <View styles={styles.container}>
             <Svg viewBox='' width={size} height={size}>
@@ -20,17 +53,17 @@ export default NextButton = () => {
                         strokeWidth={strokeWidth}
                     />
                     <Circle
+                        ref={progressRef}
                         stroke="#F433BF"
                         cx={center}
                         cy={center}
                         r={radius}
                         strokeWidth={strokeWidth}
                         strokeDasharray={circumference}
-                        strokeDashoffset={circumference - circumference * 60 / 100}
                     />
                 </G>
             </Svg>
-            <TouchableOpacity style={styles.button} activeOpacity={0.6}>
+            <TouchableOpacity onPress={scrollTo} style={styles.button} activeOpacity={0.6}>
                 <AntDesign style={{ justifyContent: 'center', alignItems: 'center' }} name="arrowright" size={32} color="#fff" />
             </TouchableOpacity>
         </View>
