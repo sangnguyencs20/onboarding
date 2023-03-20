@@ -42,8 +42,8 @@ export default NextButton = ({ percentage, scrollTo }) => {
     });
 
     return (
-        <View styles={styles.container}>
-            <Svg viewBox='' width={size} height={size}>
+        <View style={styles.container}>
+            <Svg width={size} height={size}>
                 <G rotation="-90" origin={center}>
                     <Circle
                         stroke="#E6E7E8"
@@ -75,17 +75,12 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        position: 'relative',
     },
     button: {
         backgroundColor: '#F4338F',
         borderRadius: 128,
         padding: 20,
         position: 'absolute',
-        top: '48%',
-        left: '15.5%',
-        marginTop: -32,
-        marginLeft: -32,
     }
 });
 
