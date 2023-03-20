@@ -4,10 +4,11 @@ import Onboarding from './components/Onboarding';
 import HomeScreen from './components/HomeScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StatusBar } from 'expo-status-bar';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
+// import { NavigationContainer } from '@react-navigation/native';
 
-
-
+//const Stack = createStackNavigator();
 const Loading = () => {
   return (
     <View>
@@ -44,9 +45,16 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      {loading ? <Loading /> : viewedOnboarding ? <HomeScreen /> : <Onboarding />}
+      <SafeAreaView>
+        <NavigationContainer>
+          {loading ? <Loading /> : viewedOnboarding ? <HomeScreen /> : <Onboarding />}
+        
+        </NavigationContainer>
+      </SafeAreaView>
       <StatusBar style="auto" />
-    </View>
+
+
+    </View >
   );
 }
 

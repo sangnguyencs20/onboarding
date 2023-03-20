@@ -3,7 +3,7 @@ import React from "react";
 import { View, Text, StyleSheet, Animated, useWindowDimensions } from "react-native";
 
 export default Paginator = ({ data, scrollX }) => {
-    const {width} = useWindowDimensions();
+    const { width } = useWindowDimensions();
     return (
         <View style={{ flexDirection: 'row', height: 64 }}>
             {
@@ -22,7 +22,7 @@ export default Paginator = ({ data, scrollX }) => {
                     })
 
                     return (<Animated.View
-                        style = {[styles.dot, { width: dotWidth, opacity }]} key = {i.toString()}
+                        style={[styles.dot, { width: dotWidth, opacity }]} key={i.toString()}
                     />)
                 })
             }
@@ -36,5 +36,6 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         backgroundColor: '#493d8a',
         marginHorizontal: 8,
+        marginTop: 50,
     }
 });
